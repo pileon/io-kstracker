@@ -39,3 +39,8 @@
 # This file defines all data models in the application.
 
 doRelativeFile("../iorm/iorm/iorm/Iorm.io")
+
+ifTrue(KSTracker getSlot("db") == nil,
+    "FATAL: Database object not created" println
+    System exit
+)
