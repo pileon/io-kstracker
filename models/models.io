@@ -40,7 +40,7 @@
 
 doRelativeFile("../iorm/iorm/iorm/Iorm.io")
 
-ifTrue(KSTracker getSlot("db") == nil,
+ifFalse(KSTracker hasSlot("db"),
     "FATAL: Database object not created" println
     System exit
 )
