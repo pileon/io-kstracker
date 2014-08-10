@@ -52,10 +52,10 @@ KSTracker db models := Object clone do(
         setTableName("users")
 
         newField("name", Iorm VarcharField clone setLength(20))
-        newField("pwd", Iorm TextField clone)
-        newField("first_name", Iorm TextField clone)
-        newField("last_name", Iorm TextField clone)
-        newField("email", Iorm TextField clone)
+        newField("pwd", Iorm VarcharField clone setLength(40))  # SHA1
+        newField("first_name", Iorm VarcharField clone setLength(20))
+        newField("last_name", Iorm VarcharField clone setLength(20))
+        newField("email", Iorm VarcharField clone setLength(40))
         newField("info", Iorm TextField clone)        # General free-form info
         newField("ksname", Iorm TextField clone)      # Kickstarter user name
     )
