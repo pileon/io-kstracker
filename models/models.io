@@ -59,4 +59,6 @@ KSTracker db models := Object clone do(
         newField("info", Iorm TextField clone)        # General free-form info
         newField("ksname", Iorm TextField clone)      # Kickstarter user name
     )
+
+    removeSlot("session");  # Don't need this one anymore
 )
