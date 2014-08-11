@@ -77,7 +77,7 @@ KSTracker db models := Object clone do(
 
         newField("project", Iorm ForeignKeyField with(Project))
         newField("perk", Iorm TextField clone)
-        newfield("delivered", Iorm IntegerField clone)  # Perk has been delivered?
+        newfield("delivered", Iorm BooleanField clone)  # Perk has been delivered?
     )
 
     Addon := Iorm Model with(session) setyp(
@@ -86,7 +86,7 @@ KSTracker db models := Object clone do(
         newField("project", Iorm ForeignKeyField with(Project))
         newField("addon", Iorm TextField clone)
         newField("cost", Iorm IntegerField clone)
-        newfield("delivered", Iorm IntegerField clone)  # Addon has been delivered?
+        newfield("delivered", Iorm BooleanField clone)  # Addon has been delivered?
     )
 
     removeSlot("session");  # Don't need this one anymore
