@@ -60,5 +60,20 @@ KSTracker db models := Object clone do(
         newField("ksname", Iorm TextField clone)      # Kickstarter user name
     )
 
+    Project := Iorm Model with(session) setup(
+        setTableName("projects")
+
+        newField("name", Iorm VarcharField clone setLength(20))
+        newField("ksid", Iorm VarcharField clone setLength(20))
+        newField("pledge", Iorm IntegerField clone) # Total pledged for project
+        newField("reward", Iorm Integerfield clone) # Reward level for pledge
+
+        # The user pledging for this project
+        newField("user", Iorm ForeignKeyField with(User))
+    )
+
+    # TODO: Pledge perks
+    # TODO: Pledge addons
+
     removeSlot("session");  # Don't need this one anymore
 )
