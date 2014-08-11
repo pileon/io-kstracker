@@ -1,0 +1,22 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": ".",
+            "folder_exclude_patterns":
+            [
+                ".git"
+            ],
+            "file_exclude_patterns":
+            [
+                "kstracker.sublime-*", ".gitmodules"
+            ]
+		}
+	],
+
+    "settings":
+    {
+        "tab_size": 4
+    }
+}
