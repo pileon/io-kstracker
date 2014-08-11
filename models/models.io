@@ -72,7 +72,13 @@ KSTracker db models := Object clone do(
         newField("user", Iorm ForeignKeyField with(User))
     )
 
-    # TODO: Pledge perks
+    Perk := Iorm Model with(session) setup(
+        setTableName("perks")
+
+        newField("project", Iorm ForeignKeyField with(Project))
+        newField("perk", Iorm TextField clone)
+    )
+
     # TODO: Pledge addons
 
     removeSlot("session");  # Don't need this one anymore
