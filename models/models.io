@@ -51,11 +51,11 @@ KSTracker db models := Object clone do(
     User := Iorm Model with(session) setup(
         setTableName("users")
 
-        newField("name", Iorm VarcharField clone setLength(20))
-        newField("pwd", Iorm VarcharField clone setLength(40))  # SHA1
+        newField("name", Iorm VarcharField clone setLength(20) setNotNull)
+        newField("pwd", Iorm VarcharField clone setLength(40) setNotNull)  # SHA1
         newField("first_name", Iorm VarcharField clone setLength(20))
         newField("last_name", Iorm VarcharField clone setLength(20))
-        newField("email", Iorm VarcharField clone setLength(40))
+        newField("email", Iorm VarcharField clone setLength(40) setNotNull)
         newField("info", Iorm TextField clone)        # General free-form info
         newField("ksname", Iorm TextField clone)      # Kickstarter user name
     )
@@ -63,8 +63,8 @@ KSTracker db models := Object clone do(
     Project := Iorm Model with(session) setup(
         setTableName("projects")
 
-        newField("name", Iorm VarcharField clone setLength(20))
-        newField("ksid", Iorm VarcharField clone setLength(20))
+        newField("name", Iorm VarcharField clone setLength(20) setNotNull)
+        newField("ksid", Iorm VarcharField clone setLength(20) setNotNull)
         newField("pledge", Iorm IntegerField clone) # Total pledged for project
         newField("reward", Iorm IntegerField clone) # Reward level for pledge
 
