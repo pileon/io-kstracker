@@ -88,6 +88,4 @@ KSTracker db models := Object clone do(
         newField("cost", Iorm IntegerField clone)
         newfield("delivered", Iorm BooleanField clone)  # Addon has been delivered?
     )
-
-    removeSlot("session");  # Don't need this one anymore
 )
