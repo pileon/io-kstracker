@@ -41,5 +41,6 @@ db := Object clone do(
 
     with := method(KSTracker,
         self models := doRelativeFile("models.io") with(thisContext)
+        return self
     )
 )

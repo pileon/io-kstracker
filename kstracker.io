@@ -36,7 +36,7 @@
 #                                                                    #
 ######################################################################
 
-Iorm := doRelativeFile("../iorm/iorm/Iorm.io") clone
+doRelativeFile("../iorm/iorm/Iorm.io")
 
 KSTracker := Object clone do(
     db := doRelativeFile("db/db.io") with(thisContext)

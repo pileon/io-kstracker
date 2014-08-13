@@ -38,7 +38,7 @@
 
 models := Object clone do(
     with := method(db,
-        self User := Iorm Model with(db session) setup(
+        self UserX := Iorm Model with(db session) setup(
             setTableName("users")
 
             newField("name", Iorm VarcharField clone setLength(20) setNotNull)
@@ -50,7 +50,11 @@ models := Object clone do(
             newField("ksname", Iorm TextField clone)      # Kickstarter user name
         )
 
-        self Project := Iorm Model with(db session) setup(
+        self UserX println
+
+        self Project := Iorm Model with(db session) setup()
+            thisContext println
+
             setTableName("projects")
 
             newField("name", Iorm VarcharField clone setLength(20) setNotNull)
@@ -59,24 +63,26 @@ models := Object clone do(
             newField("reward", Iorm IntegerField clone) # Reward level for pledge
 
             # The user pledging for this project
-            newField("user", Iorm ForeignKeyField with(self User))
+            # newField("user", Iorm ForeignKeyField with(thisContext UserX))
         )
 
-        self Perk := Iorm Model with(db session) setup(
-            setTableName("perks")
+        # self Perk := Iorm Model with(db session) setup(
+        #     setTableName("perks")
 
-            newField("project", Iorm ForeignKeyField with(self Project))
-            newField("perk", Iorm TextField clone)
-            newfield("delivered", Iorm BooleanField clone)  # Perk has been delivered?
-        )
+        #     newField("project", Iorm ForeignKeyField with(self Project))
+        #     newField("perk", Iorm TextField clone)
+        #     newfield("delivered", Iorm BooleanField clone)  # Perk has been delivered?
+        # )
 
-        self Addon := Iorm Model with(db session) setup(
-            setTableName("addons")
+        # self Addon := Iorm Model with(db session) setup(
+        #     setTableName("addons")
 
-            newField("project", Iorm ForeignKeyField with(self Project))
-            newField("addon", Iorm TextField clone)
-            newField("cost", Iorm IntegerField clone)
-            newfield("delivered", Iorm BooleanField clone)  # Addon has been delivered?
-        )
+        #     newField("project", Iorm ForeignKeyField with(self Project))
+        #     newField("addon", Iorm TextField clone)
+        #     newField("cost", Iorm IntegerField clone)
+        #     newfield("delivered", Iorm BooleanField clone)  # Addon has been delivered?
+        # )
+
+        return self
     )
 )
