@@ -1,6 +1,6 @@
 # -*- mode: io; coding: utf-8 -*-
 ######################################################################
-# File: db/models.io                               Part of kstracker #
+# File: kstracker.io                               Part of kstracker #
 #                                                                    #
 # Copyright (C) 2014 Joachim Pileborg and individual contributors.   #
 # All rights reserved.                                               #
@@ -36,53 +36,8 @@
 #                                                                    #
 ######################################################################
 
-models := Object clone do(
-    with := method(db,
-        self UserX := Iorm Model with(db session) setup(
-            setTableName("users")
+doRelativeFile("../iorm/iorm/Iorm.io")
 
-            newField("name", Iorm VarcharField clone setLength(20) setNotNull)
-            newField("pwd", Iorm VarcharField clone setLength(40) setNotNull)  # SHA1
-            newField("first_name", Iorm VarcharField clone setLength(20))
-            newField("last_name", Iorm VarcharField clone setLength(20))
-            newField("email", Iorm VarcharField clone setLength(40) setNotNull)
-            newField("info", Iorm TextField clone)        # General free-form info
-            newField("ksname", Iorm TextField clone)      # Kickstarter user name
-        )
-
-        self UserX println
-
-        self Project := Iorm Model with(db session) setup()
-            thisContext println
-
-            setTableName("projects")
-
-            newField("name", Iorm VarcharField clone setLength(20) setNotNull)
-            newField("ksid", Iorm VarcharField clone setLength(20) setNotNull)
-            newField("pledge", Iorm IntegerField clone) # Total pledged for project
-            newField("reward", Iorm IntegerField clone) # Reward level for pledge
-
-            # The user pledging for this project
-            # newField("user", Iorm ForeignKeyField with(thisContext UserX))
-        )
-
-        # self Perk := Iorm Model with(db session) setup(
-        #     setTableName("perks")
-
-        #     newField("project", Iorm ForeignKeyField with(self Project))
-        #     newField("perk", Iorm TextField clone)
-        #     newfield("delivered", Iorm BooleanField clone)  # Perk has been delivered?
-        # )
-
-        # self Addon := Iorm Model with(db session) setup(
-        #     setTableName("addons")
-
-        #     newField("project", Iorm ForeignKeyField with(self Project))
-        #     newField("addon", Iorm TextField clone)
-        #     newField("cost", Iorm IntegerField clone)
-        #     newfield("delivered", Iorm BooleanField clone)  # Addon has been delivered?
-        # )
-
-        return self
-    )
+KSTracker := Object clone do(
+    db := doRelativeFile("db/db.io") with(thisContext)
 )
