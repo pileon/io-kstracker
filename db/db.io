@@ -40,7 +40,7 @@ db := Object clone do(
     session := Iorm Session withSQLite("../kstracker.db")
 
     with := method(KSTracker,
-        self models := doRelativeFile("models.io") with(thisContext)
+        self models := doRelativeFile("./models.io") with(thisContext)
         return self
     )
 )

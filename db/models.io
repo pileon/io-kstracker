@@ -52,7 +52,7 @@ models := Object clone do(
 
         self UserX println
 
-        self Project := Iorm Model with(db session) setup()
+        self Project := Iorm Model with(db session) setup(
             thisContext println
 
             setTableName("projects")
